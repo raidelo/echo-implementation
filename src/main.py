@@ -1,4 +1,4 @@
-from cli import argument_parser
+from .cli import argument_parser
 
 
 def main() -> int:

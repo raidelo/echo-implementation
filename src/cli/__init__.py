@@ -1,7 +1,7 @@
 from argparse import ArgumentParser
 
-from client import process_client
-from server import process_server
+from ..client import process_client
+from ..server import process_server
 
 
 def argument_parser() -> ArgumentParser:

@@ -1,8 +1,7 @@
 from socket import AddressFamily, SocketKind, socket
 from threading import Thread
-from typing import Generator
 
-from .constants import CHUNK
+from ..utils import readlines
 
 
 def server_stream(address: tuple[str, int]) -> None:
@@ -33,14 +32,6 @@ def handle_stream(connection: socket, address: tuple[str, int]) -> None:
         respond_stream(connection, line)
 
     connection.close()
-
-
-def readlines(connection: socket) -> Generator[bytes, None, None]:
-    while True:
-        data = connection.recv(CHUNK)
-        if len(data) == 0:
-            return
-        yield data
 
 
 def respond_stream(connection: socket, content: bytes) -> None:

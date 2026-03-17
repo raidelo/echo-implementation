@@ -1,6 +1,6 @@
 from socket import AddressFamily, SocketKind, socket
 
-from .constants import CHUNK
+from ..constants import CHUNK
 
 
 def server_dgram(address: tuple[str, int]) -> None:
