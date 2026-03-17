@@ -36,17 +36,11 @@ def handle_stream(connection: socket, address: tuple[str, int]) -> None:
 
 
 def readlines(connection: socket) -> Generator[bytes, None, None]:
-    line = b""
     while True:
-        received = connection.recv(CHUNK)
-        if len(received) == 0:
+        data = connection.recv(CHUNK)
+        if len(data) == 0:
             return
-        line += received
-        res = line.find(b"\n")
-        if res != 0:
-            y = line[: res + 1]
-            line = line[res + 1 :]
-            yield y
+        yield data
 
 
 def respond_stream(connection: socket, content: bytes) -> None:
