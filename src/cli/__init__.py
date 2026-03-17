@@ -6,6 +6,7 @@ from server import process_server
 
 def argument_parser() -> ArgumentParser:
     parser = ArgumentParser()
+    parser.add_argument("type", choices=["tcp", "udp"])
 
     subparser = parser.add_subparsers()
 
@@ -17,6 +18,7 @@ def argument_parser() -> ArgumentParser:
     pclient.add_argument(
         "port",
         nargs="?",
+        type=int,
         default=7,
         help="Specify the port number to use (default: 7).",
     )
@@ -24,12 +26,14 @@ def argument_parser() -> ArgumentParser:
 
     pserver = subparser.add_parser("server")
     pserver.add_argument(
-        "address",
-        help="Specify the IP address or hostname to connect to.",
+        "--bind",
+        default="0.0.0.0",
+        help="Network interface to listen on (default: 0.0.0.0).",
     )
     pserver.add_argument(
         "port",
         nargs="?",
+        type=int,
         default=7,
         help="Specify the port number to use (default: 7).",
     )
