@@ -1,7 +1,11 @@
 [project]
 name = "echo-implementation"
 version = "0.1.0"
-description = "Add your description here"
+description = "RFC 862 Echo Server/Client implementation"
+authors = [{ "name" = "Raidel", "email" = "raidelosix@gmail.com" }]
 readme = "README.md"
 requires-python = ">=3.12"
 dependencies = []
+
+[project.scripts]
+echoimpl = "echo_implementation.main:main"
